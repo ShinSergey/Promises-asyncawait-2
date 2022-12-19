@@ -4,11 +4,16 @@ import GameSaving from './GameSaving';
 
 export default class GameSavingLoader {
   static load() {
-    read()
-      .then((responce) => json(responce))
-      .then((response) => {
+    (async () => {
+      try {
+        const readed = await read();
+        const jsoned = await json(readed);
+      } catch {
+        throw new Error('Что-то пошло не так')
+      } finally {
         const gameSaving = new GameSaving();
-        return gameSaving = response;
-      });
+        return gameSaving = jsoned;
+      }
+    })();
   }
 }
