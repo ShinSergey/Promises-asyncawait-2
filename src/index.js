@@ -1,1 +1,3 @@
-import GameSavingLoader from './GameSavingLoader';
+import './css/style.css';
+
+import './GameSavingLoader';
