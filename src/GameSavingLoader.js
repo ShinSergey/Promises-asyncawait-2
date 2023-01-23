@@ -3,17 +3,15 @@ import read from './reader';
 import GameSaving from './GameSaving';
 
 export default class GameSavingLoader {
-  static load() {
-    (async () => {
-      try {
-        const readed = await read();
-        const jsoned = await json(readed);
-      } catch {
-        throw new Error('Что-то пошло не так')
-      } finally {
-        const gameSaving = new GameSaving();
-        return gameSaving = jsoned;
-      }
-    })();
+  static async load() {
+    try {
+    const responce1 = await read();
+    const responce2 = await json(responce1);
+    let obj = JSON.parse(responce2);
+    return new GameSaving(obj.id, obj.created, obj.userInfo);
+  }
+    catch(e) {
+      alert(e)
+    }
   }
 }
