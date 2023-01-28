@@ -11,9 +11,3 @@ test('should load', () => {
     });
   });
 });
-
-test('should throw error', () => {
-  GameSavingLoader.load().then((data) => {
-    expect().toEqual();
-  });
-});
